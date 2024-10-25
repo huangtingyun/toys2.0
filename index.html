@@ -6,6 +6,7 @@
     <title>魅惑萬聖夜 - 情趣Toys夢天堂</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* 原有樣式保持不變 */
         body {
             font-family: 'Noto Sans TC', sans-serif;
             margin: 0;
@@ -158,60 +159,133 @@
             animation: pulse 1.5s infinite;
         }
         @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* 新增年齡確認彈窗樣式 */
+        .age-verification {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .age-verification-content {
+            background: linear-gradient(135deg, #2a1533 0%, #1a0f1e 100%);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 90%;
+            width: 400px;
+            box-shadow: 0 0 20px rgba(255, 102, 255, 0.3);
+        }
+        .age-verification h2 {
+            color: #ff66ff;
+            margin-bottom: 20px;
+        }
+        .age-verification p {
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        .age-btn {
+            padding: 12px 25px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .age-btn-yes {
+            background: linear-gradient(45deg, #ff66ff, #ff9933);
+            color: white;
+        }
+        .age-btn-no {
+            background: #666;
+            color: white;
+        }
+        .age-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 102, 255, 0.3);
+        }
+        .main-content {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <img src="https://i.ibb.co/w0b2LY9/original.png" alt="情趣Toys夢天堂 Logo" class="logo">
-            <h1>魅惑萬聖夜 - 放浪小魅魔</h1>
-        </header>
-        
-        <div class="main-image-container">
-            <img src="https://i.ibb.co/dm3x1Ny/1233211.jpg" alt="Halloween Special" class="main-image">
-            <div id="leftButton" class="cover-button">解開魔法</div>
-            <div id="rightButton" class="cover-button">解開魔法</div>
+    <!-- 年齡確認彈窗 -->
+    <div class="age-verification" id="ageVerification">
+        <div class="age-verification-content">
+            <h2>年齡確認</h2>
+            <p>您必須年滿18歲才能瀏覽此網站的內容。<br>請確認您的年齡。</p>
+            <button class="age-btn age-btn-yes" onclick="verifyAge(true)">我已滿18歲</button>
+            <button class="age-btn age-btn-no" onclick="verifyAge(false)">我未滿18歲</button>
         </div>
-        
-        <div class="content">
-            <p>準備好迎接一個<span class="highlight">刺激又放浪</span>的萬聖節了嗎？</p>
-            <p>魔法增大術！誰是最浪的魅魔？</p>
-            <p><span class="highlight">10/26 限定：</span>抽驚喜魔法棒！</p>
-            <p><span class="highlight">特別活動：</span>女神<span class="highlight">黃庭筠</span>擔任一日店長！</p>
-            <p>南瓜變變變，驚喜不斷！</p>
-            <a href="https://www.dp.toys" class="cta-button">前往情趣夢天堂</a>
-        </div>
-        
-        <div class="product-list">
-            <div class="product-item" onclick="window.location.href='https://www.dp.toys'">
-                <img src="https://i.ibb.co/M5c2qwW/2-2.jpg" alt="南瓜魔法棒" class="product-image">
-                <div class="product-name">南瓜魔法棒</div>
-                <div class="product-price">NT$ ???</div>
+    </div>
+
+    <!-- 主要內容 -->
+    <div class="main-content" id="mainContent">
+        <div class="container">
+            <header class="header">
+                <img src="https://i.ibb.co/w0b2LY9/original.png" alt="情趣Toys夢天堂 Logo" class="logo">
+                <h1>魅惑萬聖夜 - 放浪小魅魔</h1>
+            </header>
+            
+            <div class="main-image-container">
+                <img src="https://i.ibb.co/dm3x1Ny/1233211.jpg" alt="Halloween Special" class="main-image">
+                <div id="leftButton" class="cover-button">解開魔法</div>
+                <div id="rightButton" class="cover-button">解開魔法</div>
             </div>
-            <div class="product-item" onclick="window.location.href='https://www.dp.toys'" style="position: relative;">
-                <img src="https://i.ibb.co/BV028MH/photo.jpg" alt="庭筠活動海報" class="product-image">
-                <div class="product-name">庭筠活動海報</div>
-                <div class="product-price">NT$ ???</div>
-                <div class="limited-offer">活動限量</div>
+            
+            <div class="content">
+                <p>準備好迎接一個<span class="highlight">刺激又放浪</span>的萬聖節了嗎？</p>
+                <p>魔法增大術！誰是最浪的魅魔？</p>
+                <p><span class="highlight">10/26 限定：</span>抽驚喜魔法棒！</p>
+                <p><span class="highlight">特別活動：</span>女神<span class="highlight">黃庭筠</span>擔任一日店長！</p>
+                <p>南瓜變變變，驚喜不斷！</p>
+                <a href="https://www.dp.toys" class="cta-button">前往情趣夢天堂</a>
             </div>
+            
+            <div class="product-list">
+                <div class="product-item" onclick="window.location.href='https://www.dp.toys'">
+                    <img src="https://i.ibb.co/M5c2qwW/2-2.jpg" alt="南瓜魔法棒" class="product-image">
+                    <div class="product-name">南瓜魔法棒</div>
+                    <div class="product-price">NT$ ???</div>
+                </div>
+                <div class="product-item" onclick="window.location.href='https://www.dp.toys'" style="position: relative;">
+                    <img src="https://i.ibb.co/BV028MH/photo.jpg" alt="庭筠活動海報" class="product-image">
+                    <div class="product-name">庭筠活動海報</div>
+                    <div class="product-price">NT$ ???</div>
+                    <div class="limited-offer">活動限量</div>
+                </div>
+            </div>
+            
+            <footer class="footer">
+                <p>© 2024 情趣Toys夢天堂 版權所有</p>
+            </footer>
         </div>
-        
-        <footer class="footer">
-            <p>© 2024 情趣Toys夢天堂 版權所有</p>
-        </footer>
     </div>
 
     <script>
+        // 年齡確認功能
+        function verifyAge(isAdult) {
+            if (isAdult) {
+                document.getElementById('ageVerification').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
+            } else {
+                window.location.href = 'https://www.google.com';
+            }
+        }
+
+        // 原有的按鈕功能
         let leftButtonVisible = true;
         let rightButtonVisible = true;
         
@@ -232,6 +306,7 @@
                 setTimeout(() => {
                     document.getElementById('leftButton').style.display = 'none';
                     document.getElementById('rightButton').style.display = 'none';
+                    document.querySelector('.main-image').src = 'https://i.ibb.co/LQvfX4C/1233212.jpg';
                 }, 300);
             }
         }

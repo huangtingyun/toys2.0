@@ -54,8 +54,8 @@
         }
         .cover-button {
             position: absolute;
-            width: 90px;
-            height: 90px;
+            width: 60px;
+            height: 60px;
             background-color: rgba(255, 102, 255, 0.7);
             border-radius: 50%;
             cursor: pointer;
@@ -65,18 +65,18 @@
             font-weight: bold;
             color: white;
             transition: all 0.3s ease;
-            font-size: 18px;
+            font-size: 16px;
         }
         .cover-button:hover {
             background-color: rgba(255, 102, 255, 0.9);
             transform: scale(1.1);
         }
         #leftButton {
-            top: 50%;
+            top: 45%;
             left: 25%;
         }
         #rightButton {
-            top: 50%;
+            top: 45%;
             right: 25%;
         }
         .content {
@@ -114,20 +114,13 @@
             font-size: 14px;
             color: #ccc;
         }
-        #visitorCount {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 16px;
-            color: #ff9933;
-        }
         .product-list {
             display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
+            justify-content: space-between;
             margin-top: 30px;
         }
         .product-item {
-            width: 45%;
+            width: 48%;
             margin-bottom: 20px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
@@ -213,8 +206,6 @@
             </div>
         </div>
         
-        <div id="visitorCount">今日魅魔人數：載入中...</div>
-        
         <footer class="footer">
             <p>© 2024 情趣Toys夢天堂 版權所有</p>
         </footer>
@@ -244,11 +235,6 @@
                 }, 300);
             }
         }
-        
-        let visitorCount = localStorage.getItem('visitorCount') || 0;
-        visitorCount = parseInt(visitorCount) + 1;
-        localStorage.setItem('visitorCount', visitorCount);
-        document.getElementById('visitorCount').textContent = `今日魅魔人數：${visitorCount}`;
     </script>
 </body>
 </html>
